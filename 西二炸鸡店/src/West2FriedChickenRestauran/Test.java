@@ -17,6 +17,8 @@ public class Test {
         //West2FriedChickenRestauran.SetMealList.toString();
         West2FriedChickenRestauran.SetMealList.get(0).toString();
         west2friedchickenrestauran.PackageForSale(West2FriedChickenRestauran.SetMealList.get(0));
+        west2friedchickenrestauran.PackageForSale(West2FriedChickenRestauran.SetMealList.get(0));
+       // west2friedchickenrestauran.PackageForSale(West2FriedChickenRestauran.SetMealList.get(0));
      //   west2friedchickenrestauran.PackageForSale(west2friedchickenrestauran.setmealone);
 
 
