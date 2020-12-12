@@ -6,6 +6,7 @@ public class UnMultithreading {
         System.out.println("请输入目标数字：");
         Scanner scanner = new Scanner(System.in);
         int x = scanner.nextInt();
+        ans=0;
         for (long i = 1; i < 1000000000; i++) {
             if (contain(i, x)) ans += i;
         }

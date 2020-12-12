@@ -32,12 +32,11 @@ public class Multithreading {
 }
 
 class MyThread extends Thread {
-    public long ans=0;
-    public int Start,End;
-    public int target;
-    public MyThread(int start,int end,int tar){
-        this.Start=start;
-        this.End=end;
+    public long ans;
+    public int start,end,target;
+    public MyThread(int s,int e,int tar){
+        this.start=s;
+        this.end=e;
         this.target=tar;
     }//构造函数
     public long getAnswer(){
@@ -45,7 +44,8 @@ class MyThread extends Thread {
     }
     @Override
     public void run() {
-        for(int i=Start;i<=End;i++)
+        ans=0;
+        for(int i=start;i<=end;i++)
             if(Multithreading.contain(i,target))
                 ans+=i;
     }
