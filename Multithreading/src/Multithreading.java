@@ -35,14 +35,14 @@ class MyThread extends Thread {
     public long ans=0;
     public int Start,End;
     public int target;
-    public long getAnswer(){
-        return ans;
-    }
     public MyThread(int start,int end,int tar){
         this.Start=start;
         this.End=end;
         this.target=tar;
     }//构造函数
+    public long getAnswer(){
+        return ans;
+    }
     @Override
     public void run() {
         for(int i=Start;i<=End;i++)
