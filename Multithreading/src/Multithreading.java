@@ -5,18 +5,19 @@ public class Multithreading {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // 创建Scanner对象
         System.out.println("请输入目标数字：");
-        int target=scanner.nextInt();//输入target
-        int number=100;
-        int length=10000000;
-        MyThread []t = new MyThread[10000000];
+        int target=scanner.nextInt();//输入target目标数字
+        int number=1000;//设置1000个线程
+        int size=1000000;//每个线程的大小
+        MyThread []t = new MyThread[1000000];
         for(int i=0;i<number;i++){
-            t[i]=new MyThread(i*length,(i+1)*length,target);
-            t[i].start();
+            t[i]=new MyThread(i*size,(i+1)*size,target);//传入线程区间及目标数字
+            t[i].start();//开始
         }
         for (int i=0;i<number; i++) {
             try{
                 t[i].join();
-            } catch (InterruptedException x) {
+            }
+            catch (InterruptedException x) {
                 x.printStackTrace( );
             }
         }
@@ -31,9 +32,9 @@ public class Multithreading {
 }
 
 class MyThread extends Thread {
-    private int Start,End;
-    private long ans=0;
-    private int target;
+    public long ans=0;
+    public int Start,End;
+    public int target;
     public long getAnswer(){
         return ans;
     }
@@ -41,14 +42,12 @@ class MyThread extends Thread {
         this.Start=start;
         this.End=end;
         this.target=tar;
-    }
+    }//构造函数
     @Override
     public void run() {
-        for(int i=Start;i<=End;i++){
-            if(Multithreading.contain(i,target)){
+        for(int i=Start;i<=End;i++)
+            if(Multithreading.contain(i,target))
                 ans+=i;
-            }
-        }
     }
 
 }
