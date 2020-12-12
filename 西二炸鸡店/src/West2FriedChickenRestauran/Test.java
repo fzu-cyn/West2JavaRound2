@@ -13,10 +13,10 @@ public class Test {
         West2FriedChickenRestauran west2friedchickenrestauran= new West2FriedChickenRestauran(10000);
         west2friedchickenrestauran.BulkPurchase(juice,2);
         west2friedchickenrestauran.BulkPurchase(beer,2);
-        West2FriedChickenRestauran.setmealone.toString();
-        West2FriedChickenRestauran.SetMealList.toString();
-//        West2FriedChickenRestauran.SetMealList.get(0).toString();
-//        west2friedchickenrestauran.PackageForSale(West2FriedChickenRestauran.SetMealList.get(0));
+      //  West2FriedChickenRestauran.setmealone.toString();
+        //West2FriedChickenRestauran.SetMealList.toString();
+        West2FriedChickenRestauran.SetMealList.get(0).toString();
+        west2friedchickenrestauran.PackageForSale(West2FriedChickenRestauran.SetMealList.get(0));
      //   west2friedchickenrestauran.PackageForSale(west2friedchickenrestauran.setmealone);
 
 

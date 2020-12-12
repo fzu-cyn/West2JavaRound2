@@ -10,7 +10,7 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
     public double AccountBalance;
     ArrayList<Beer> BeerList = new ArrayList<Beer>();
     ArrayList<Juice> JuiceList = new ArrayList<Juice>();
-    static ArrayList<SetMeal> SetMealList = new ArrayList<SetMeal>();
+    static final ArrayList<SetMeal> SetMealList = new ArrayList<SetMeal>();
     static final public SetMeal setmealone ;
     West2FriedChickenRestauran(double AccountBalance){
         this.AccountBalance=AccountBalance;
@@ -35,6 +35,7 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
                 Use((Beer)setmeal.drinks);
                 System.out.println("成功售出:");
                 setmeal.toString();
+                System.out.println("余额:"+AccountBalance);
             }
             catch(IngredientSortOutException x){
                 AccountBalance-=setmeal.price;
@@ -46,9 +47,10 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
         }
         if(setmeal.drinks instanceof Juice){
             try{
-                Use((Beer)setmeal.drinks);
+                Use((Juice)setmeal.drinks);
                 System.out.println("成功售出:");
                 setmeal.toString();
+                System.out.println("余额:"+AccountBalance);
             }
             catch(IngredientSortOutException x){
                 AccountBalance-=setmeal.price;
@@ -69,7 +71,7 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
                     for(int i=0;i<number;i++)
                         JuiceList.add(juice);
                     System.out.println("已购买"+number+"瓶"+juice.name);
-                    System.out.println("余额"+AccountBalance);
+                    System.out.println("余额:"+AccountBalance);
                 }
                 else throw new OverdraftBalanceException("余额不足，仍需资金"+(juice.cost*number-AccountBalance)+"元。购买"+juice.name+"失败");
             }
@@ -80,7 +82,7 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
                     for(int i=0;i<number;i++)
                         BeerList.add(beer);
                     System.out.println("已购买"+number+"瓶"+beer.name);
-                    System.out.println("余额"+AccountBalance);
+                    System.out.println("余额:"+AccountBalance);
                 }
                 else throw new OverdraftBalanceException("余额不足，仍需资金"+(beer.cost*number-AccountBalance)+"元。购买"+beer.name+"失败");
             }
@@ -100,13 +102,13 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
                 System.out.println("已过期");
             }
         for(Juice juice:JuiceList){
-            if(juices.name==juice.name){
+            if(juices.name.equals(juice.name)){
                 JuiceList.remove(juice);
                 flag=true;
                 break;
             }
         }
-        if(flag==false) throw new IngredientSortOutException(juices.name+"售罄");
+        if(!flag) throw new IngredientSortOutException(juices.name+"售罄");
 
     }
 
@@ -120,13 +122,13 @@ public class West2FriedChickenRestauran implements FriedChickenRestaurant{
                 System.out.println("已过期");
             }
         for(Beer beer:BeerList){
-            if(beers.name==beer.name){
+            if(beers.name.equals(beer.name)){
                 JuiceList.remove(beer);
                 flag=true;
                 break;
             }
         }
-        if(flag==false) throw new IngredientSortOutException(beers.name+"售罄");
+        if(!flag) throw new IngredientSortOutException(beers.name+"售罄");
 
     }
 
